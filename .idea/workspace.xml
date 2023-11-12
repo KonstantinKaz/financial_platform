@@ -5,10 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="03dcbad1-ee49-44f2-8963-be87d2fba398" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/finance/permissions.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/finance/serializers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/finance/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/back/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/back/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/finance/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/finance/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/finance/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/finance/migrations/0002_transaction.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/finance/migrations/0003_alter_transaction_category.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/finance/migrations/0004_remove_account_balance.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/finance/migrations/0005_account_balance.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/finance/migrations/0006_remove_account_currency_alter_account_balance.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/finance/migrations/0007_alter_transaction_date.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/finance/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/finance/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/finance/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/finance/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,14 +44,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/Users/konstantin/Documents/Универ/Курсач/Разработка/financial_platform/back/finance"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/konstantin/Documents/Универ/Курсач/Разработка/financial_platform/back/finance&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/back/finance" />

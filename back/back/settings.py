@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'import_export',
     # 'rest_framework.authtoken',
     'djoser',
 
@@ -71,6 +72,15 @@ TEMPLATES = [
         },
     },
 ]
+
+# TEMPLATES = [
+#     {
+#         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+#         'DIRS': [os.path.join(BASE_DIR, 'templates')],  # Добавьте эту строку
+#         'APP_DIRS': True,
+#         # ...
+#     },
+# ]
 
 WSGI_APPLICATION = 'back.wsgi.application'
 

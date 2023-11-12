@@ -43,11 +43,8 @@ class TransactionAPIList(generics.ListCreateAPIView):
     pagination_class = AccountAPIListPagination
 
     # def get_queryset(self):
-    #     # Пример фильтрации с использованием Q и логических операторов
-    #     return Transaction.objects.filter(
-    #         Q(transaction_type='Доход') | Q(transaction_type='Перевод'),
-    #         amount__gt=100
-    #     )
+    #     # Фильтрация транзакций по текущему пользователю
+    #     return Transaction.objects.filter(user=self.request.user)
 
 
 class TransactionAPIUpdate(generics.RetrieveUpdateAPIView):
@@ -60,3 +57,4 @@ class TransactionAPIDestroy(generics.RetrieveDestroyAPIView):
     queryset = Transaction.objects.all()
     serializer_class = FinanceSerializer
     permission_classes = (IsAdminOrReadOnly, )
+
