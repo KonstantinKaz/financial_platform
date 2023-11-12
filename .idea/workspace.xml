@@ -9,14 +9,7 @@
       <change beforePath="$PROJECT_DIR$/back/back/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/back/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/finance/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/finance/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/finance/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/finance/migrations/0002_transaction.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/finance/migrations/0003_alter_transaction_category.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/finance/migrations/0004_remove_account_balance.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/finance/migrations/0005_account_balance.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/finance/migrations/0006_remove_account_currency_alter_account_balance.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/finance/migrations/0007_alter_transaction_date.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/back/finance/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/finance/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/finance/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/finance/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
