@@ -1,4 +1,5 @@
-from rest_framework import generics
+from rest_framework import generics, filters
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
 from django.db.models import Q
@@ -129,6 +130,11 @@ class TransactionAPIList(generics.ListCreateAPIView):
     serializer_class = TransactionSerializer
     permission_classes = (IsAuthenticatedOrReadOnly,)
     pagination_class = TransactionAPIListPagination
+    filter_backends = [filters.SearchFilter, DjangoFilterBackend]  # Добавляем DjangoFilterBackend
+    search_fields = ['transaction_type', 'amount', 'description', 'income_category__title']
+    filterset_fields = ['transaction_type', 'amount', 'income_category__title']  # Определяем именнованные фильтры
+
+
 
     def get_non_income_and_transfer_transactions(self):
         id = self.request.user.id
@@ -161,6 +167,8 @@ class TransactionAPIList(generics.ListCreateAPIView):
             return self.get_salary_and_business_income()
 
         return Transaction.objects.all()
+
+
 
     # http://127.0.0.1:8000/api/transactions/?salary_and_business_income=true
     # http://127.0.0.1:8000/api/transactions/?non_income_and_transfer=true
