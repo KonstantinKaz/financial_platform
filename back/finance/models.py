@@ -26,15 +26,15 @@ class Account(models.Model):
         return self.title
 
     def update_balance(self):
-        # Вычислите сумму всех доходов и расходов
         income = self.transaction_set.filter(transaction_type='Доход').aggregate(Sum('amount'))['amount__sum'] or 0
-        expenses = self.transaction_set.filter(transaction_type='Расход').aggregate(Sum('amount'))['amount__sum'] or 0
+        expenses = self.transaction_set.filter(transaction_type__in=['Расход', 'Перевод']).aggregate(Sum('amount'))[
+                       'amount__sum'] or 0
 
-        # Обновите баланс
         self.balance = income - expenses
 
-        # Сохраните изменения
         self.save()
+
+
 
 class Transaction(models.Model):
     TRANSACTION_TYPES = [
