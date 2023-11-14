@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="03dcbad1-ee49-44f2-8963-be87d2fba398" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/back/finance/management/commands/_private.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/finance/management/commands/closepoll.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/finance/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/finance/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/finance/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/finance/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/finance/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/finance/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/finance/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/finance/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

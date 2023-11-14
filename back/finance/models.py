@@ -6,12 +6,14 @@ from simple_history.models import HistoricalRecords
 
 
 class IncomeCategory(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
 
     def __str__(self):
         return self.title
 
 class ExpenseCategory(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
 
     def __str__(self):
