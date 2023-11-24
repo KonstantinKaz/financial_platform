@@ -5,12 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="03dcbad1-ee49-44f2-8963-be87d2fba398" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/back/finance/management/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/finance/management/commands/__init__.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/back/finance/management/commands/_private.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/finance/management/commands/closepoll.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/finance/management/commands/manage_income_category.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/finance/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/finance/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/back/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/back/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/finance/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/finance/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/finance/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/finance/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/finance/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/finance/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/finance/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/finance/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,7 +46,7 @@
     &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/konstantin/Documents/Универ/Курсач/Разработка/financial_platform/back/finance&quot;
+    &quot;last_opened_file_path&quot;: &quot;/Users/konstantin/Documents/Универ/Курсач/Разработка/financial_platform&quot;
   }
 }</component>
   <component name="RecentsManager">

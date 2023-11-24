@@ -17,6 +17,10 @@ class AccountAdmin(admin.ModelAdmin):
     list_display = ['title', 'balance']
     list_filter = ['title']
     readonly_fields = ['balance']
+    search_fields = ['title']
+    # filter_horizontal = ('title')
+    list_display_links = ['title', 'balance']
+    # raw_id_fields = ('client')
 
 
 admin.site.register(Account, AccountAdmin)
@@ -47,8 +51,8 @@ class TransactionAdmin(CustomHistoryAdmin, ImportExportMixin, ExportActionModelA
     resource_class = TransactionResource
     list_display = ('id', 'user', 'account', 'transaction_type', 'amount', 'income_category', 'expense_category', 'date', 'description')
     search_fields = ['id', 'user__username', 'account__title']
-
-
+    # raw_id_fields = ('user')
+    list_display_links = ('id', 'user', 'account', 'transaction_type', 'amount', 'income_category', 'expense_category', 'date', 'description')
 
 admin.site.register(Transaction, TransactionAdmin)
 
