@@ -5,6 +5,7 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticate
 from django.db.models import Q
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from rest_framework_simplejwt.authentication import JWTAuthentication
 
 from .models import *
 from .permissions import IsAdminOrReadOnly
@@ -12,7 +13,7 @@ from .serializers import *
 
 
 class AccountAPIListPagination(PageNumberPagination):
-    page_size = 3
+    page_size = 5
     page_size_query_param = 'page_size'
     max_page_size = 2
 
@@ -24,45 +25,45 @@ class AccountViewSet(viewsets.ModelViewSet):
 
 
 class TransactionAPIListPagination(PageNumberPagination):
-    page_size = 3
+    page_size = 20
     page_size_query_param = 'page_size'
     max_page_size = 2
 
 class TransactionViewSet(viewsets.ModelViewSet):
     serializer_class = TransactionSerializer
-    permission_classes = (IsAuthenticatedOrReadOnly,)
+    permission_classes = (IsAuthenticatedOrReadOnly, )
     pagination_class = TransactionAPIListPagination
     filter_backends = [filters.SearchFilter, DjangoFilterBackend]  # Add DjangoFilterBackend
-    search_fields = ['transaction_type', 'amount', 'description', 'income_category__title', 'expense_category__title']
-    filterset_fields = ['transaction_type', 'amount', 'income_category__title', 'expense_category__title']
-
-    @action(detail=False, methods=['GET'])
-    def non_income_and_transfer(self, request):
-        id = self.request.user.id
-        if id is not None:
-            transactions = Transaction.objects.filter(
-                (Q(user_id=id) & ~Q(transaction_type__in=['Доход', 'Перевод'])) | Q(user_id=id,
-                                                                                    transaction_type='Перевод')
-            )
-            serializer = self.get_serializer(transactions, many=True)
-            return Response(serializer.data)
-        return Response([])
-
-    @action(detail=False, methods=['GET'])
-    def salary_and_business_income(self, request):
-        id = self.request.user.id
-        if id is not None:
-            transactions = Transaction.objects.filter(
-                (Q(user_id=id) & ~Q(transaction_type__in=['Перевод', 'Расход']) &
-                 Q(income_category__title='Зарплата')) |
-                (Q(user_id=id) & ~Q(transaction_type__in=['Перевод', 'Расход']) &
-                 Q(income_category__title='ИП'))
-            )
-            serializer = self.get_serializer(transactions, many=True)
-            return Response(serializer.data)
-        return Response([])
 
 
+
+    # @action(detail=False, methods=['GET'])
+    # def non_income_and_transfer(self, request):
+    #     id = self.request.user.id
+    #     if id is not None:
+    #         transactions = Transaction.objects.filter(
+    #             (Q(user_id=id) & ~Q(transaction_type__in=['Доход', 'Перевод'])) | Q(user_id=id,
+    #                                                                                 transaction_type='Перевод')
+    #         )
+    #         serializer = self.get_serializer(transactions, many=True)
+    #         return Response(serializer.data)
+    #     return Response([])
+    #
+    # @action(detail=False, methods=['GET'])
+    # def salary_and_business_income(self, request):
+    #     id = self.request.user.id
+    #     if id is not None:
+    #         transactions = Transaction.objects.filter(
+    #             (Q(user_id=id) & ~Q(transaction_type__in=['Перевод', 'Расход']) &
+    #              Q(income_category__title='Зарплата')) |
+    #             (Q(user_id=id) & ~Q(transaction_type__in=['Перевод', 'Расход']) &
+    #              Q(income_category__title='ИП'))
+    #         )
+    #         serializer = self.get_serializer(transactions, many=True)
+    #         return Response(serializer.data)
+    #     return Response([])
+    #
+    #
     def get_queryset(self):
         id = self.request.user.id
         query_param_non_income_and_transfer = self.request.query_params.get('non_income_and_transfer', None)
@@ -112,3 +113,45 @@ class IncomeCategoryViewSet(viewsets.ModelViewSet):
 class ExpenseCategoryViewSet(viewsets.ModelViewSet):
     queryset = ExpenseCategory.objects.all()
     serializer_class = ExpenseCategorySerializer
+
+from rest_framework import viewsets, status
+from rest_framework.decorators import action
+from rest_framework.response import Response
+
+
+class CategoryAPIListPagination(PageNumberPagination):
+    page_size = 50
+    page_size_query_param = 'page_size'
+    max_page_size = 100
+
+
+class CategoryViewSet(viewsets.ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+    permission_classes = [IsAuthenticated]
+    pagination_class = CategoryAPIListPagination
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
+    @action(detail=False, methods=['POST'])
+    def create_category(self, request):
+        serializer = self.get_serializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(user=self.request.user)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    @action(detail=True, methods=['PUT'])
+    def update_category(self, request, pk=None):
+        instance = self.get_object()
+        serializer = self.get_serializer(instance, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    @action(detail=True, methods=['DELETE'])
+    def delete_category(self, request, pk=None):
+        instance = self.get_object()
+        instance.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)

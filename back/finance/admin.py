@@ -49,14 +49,15 @@ class TransactionResource(resources.ModelResource):
 
 class TransactionAdmin(CustomHistoryAdmin, ImportExportMixin, ExportActionModelAdmin, admin.ModelAdmin):
     resource_class = TransactionResource
-    list_display = ('id', 'user', 'account', 'transaction_type', 'amount', 'income_category', 'expense_category', 'date', 'description')
-    search_fields = ['id', 'user__username', 'account__title']
-    # raw_id_fields = ('user')
-    list_display_links = ('id', 'user', 'account', 'transaction_type', 'amount', 'income_category', 'expense_category', 'date', 'description')
+    list_display = ('id', 'user', 'account', 'transaction_type', 'amount', 'date', 'description')
+    list_display_links = ('id', 'user', 'account', 'transaction_type', 'amount', 'date', 'description')
 
+    search_fields = ['account__title', 'transaction_type', 'amount', 'description']
+    filterset_fields = ['transaction_type', 'amount']
 admin.site.register(Transaction, TransactionAdmin)
 
 
 admin.site.register(IncomeCategory)
 admin.site.register(ExpenseCategory)
+admin.site.register(Category)
 

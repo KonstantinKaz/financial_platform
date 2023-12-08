@@ -1,6 +1,38 @@
 from rest_framework import serializers
+from rest_framework_simplejwt.authentication import JWTAuthentication
+
 
 from .models import *
+
+class IncomeCategorySerializer(serializers.ModelSerializer):
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+
+    class Meta:
+        model = IncomeCategory
+        fields = ['id', 'user', 'title']
+
+class ExpenseCategorySerializer(serializers.ModelSerializer):
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+
+    class Meta:
+        model = ExpenseCategory
+        fields = ['id', 'user', 'title']
+
+class CategorySerializer(serializers.ModelSerializer):
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+
+    class Meta:
+        model = Category
+        fields = ['id', 'user', 'title', 'type']
+
+    # Исправленный метод create
+
+    def update(self, instance, validated_data):
+        instance.title = validated_data.get('title', instance.title)
+        instance.type = validated_data.get('type', instance.type)
+        instance.save()
+        return instance
+
 
 class AccountSerializer(serializers.ModelSerializer):
     user = serializers.HiddenField(default=serializers.CurrentUserDefault())
@@ -11,6 +43,8 @@ class AccountSerializer(serializers.ModelSerializer):
 
 class TransactionSerializer(serializers.ModelSerializer):
     user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+    income_category = IncomeCategorySerializer()
+    expense_category = ExpenseCategorySerializer()
 
     def validate_amount(self, value):
         if value <= 0:
@@ -36,17 +70,4 @@ class TransactionSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class IncomeCategorySerializer(serializers.ModelSerializer):
-    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
 
-    class Meta:
-        model = IncomeCategory
-        fields = "__all__"
-
-
-class ExpenseCategorySerializer(serializers.ModelSerializer):
-    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
-
-    class Meta:
-        model = ExpenseCategory
-        fields = "__all__"
